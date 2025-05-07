@@ -4,41 +4,59 @@ import { EPokedexScreen, MenuPokedexContext } from "../../contexts/MenuPokedexCo
 export const Cross = () => {
   const { screen, menuOption, setMenuOption } = useContext(MenuPokedexContext);
 
+  const handleUp = () => {
+    if (screen === EPokedexScreen.MENU) {
+      const newOption = menuOption - 1 < 1 ? 3 : menuOption - 1;
+      setMenuOption(newOption);
+    } else if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleUp();
+    }
+  };
+
+  const handleDown = () => {
+    if (screen === EPokedexScreen.MENU) {
+      const newOption = menuOption + 1 > 3 ? 1 : menuOption + 1;
+      setMenuOption(newOption);
+    } else if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleDown();
+    }
+  };
+
+  const handleLeft = () => {
+    if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleLeft();
+    }
+  };
+
+  const handleRight = () => {
+    if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleRight();
+    }
+  };
+
+  const handleSelect = () => {
+    if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleSelect();
+    }
+  };
+
   return (
     <div id="cross">
-      <div id="leftcross" className="gameboy-button">
+      <div id="leftcross" className="gameboy-button" onClick={handleLeft}>
         <div id="leftT"></div>
       </div>
-      <div
-        id="topcross"
-        className="gameboy-button"
-        onClick={() => {
-          if (screen === EPokedexScreen.MENU) {
-            const newOption = menuOption - 1 < 1 ? 3 : menuOption - 1
-            setMenuOption(newOption)
-          }
-        }}
-      >
+      <div id="topcross" className="gameboy-button" onClick={handleUp}>
         <div id="upT"></div>
       </div>
-      <div id="rightcross" className="gameboy-button">
+      <div id="rightcross" className="gameboy-button" onClick={handleRight}>
         <div id="rightT"></div>
       </div>
-      <div id="midcross" className="gameboy-button">
+      <div id="midcross" className="gameboy-button" onClick={handleSelect}>
         <div id="midCircle"></div>
       </div>
-      <div
-        id="botcross"
-        className="gameboy-button"
-        onClick={() => {
-          if (screen === EPokedexScreen.MENU) {
-            const newOption = menuOption + 1 > 3 ? 1 : menuOption + 1
-            setMenuOption(newOption)
-          }
-        }}
-      >
+      <div id="botcross" className="gameboy-button" onClick={handleDown}>
         <div id="downT"></div>
       </div>
     </div>
-  )
-}
+  );
+};

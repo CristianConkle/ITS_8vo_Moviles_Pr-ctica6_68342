@@ -16,6 +16,16 @@ http://ionicframework.com/docs/theming/ */
   font-family: 'Pokemon GB';
 }
 
+/* Ocultar scrollbar (tanto en Chrome como en Firefox) */
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+  }
+  .scrollbar-hide {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+  }
+  
+
 @media all {
 
 	div#pokedex
