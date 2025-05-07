@@ -51,7 +51,7 @@ export const Cross = () => {
       <div id="rightcross" className="gameboy-button" onClick={handleRight}>
         <div id="rightT"></div>
       </div>
-      <div id="midcross" className="gameboy-button" onClick={handleSelect}>
+      <div id="midcross" className="gameboy-button">
         <div id="midCircle"></div>
       </div>
       <div id="botcross" className="gameboy-button" onClick={handleDown}>
