@@ -10,30 +10,38 @@ export const Cross = () => {
       setMenuOption(newOption);
     } else if (screen === EPokedexScreen.POKEDEX) {
       (window as any).pokedexGridNavigation?.handleUp();
+    } else if (screen === EPokedexScreen.PACK) {
+      (window as any).packGridNavigation?.handleUp();
     }
   };
-
+  
   const handleDown = () => {
     if (screen === EPokedexScreen.MENU) {
       const newOption = menuOption + 1 > 3 ? 1 : menuOption + 1;
       setMenuOption(newOption);
     } else if (screen === EPokedexScreen.POKEDEX) {
       (window as any).pokedexGridNavigation?.handleDown();
+    } else if (screen === EPokedexScreen.PACK) {
+      (window as any).packGridNavigation?.handleDown();
     }
   };
-
+  
   const handleLeft = () => {
     if (screen === EPokedexScreen.POKEDEX) {
       (window as any).pokedexGridNavigation?.handleLeft();
+    } else if (screen === EPokedexScreen.PACK) {
+      (window as any).packGridNavigation?.handleLeft();
     }
   };
-
+  
   const handleRight = () => {
     if (screen === EPokedexScreen.POKEDEX) {
       (window as any).pokedexGridNavigation?.handleRight();
+    } else if (screen === EPokedexScreen.PACK) {
+      (window as any).packGridNavigation?.handleRight();
     }
   };
-
+  
   const handleSelect = () => {
     if (screen === EPokedexScreen.POKEDEX) {
       (window as any).pokedexGridNavigation?.handleSelect();

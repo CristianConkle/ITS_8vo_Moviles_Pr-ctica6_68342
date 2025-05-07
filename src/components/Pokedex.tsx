@@ -13,17 +13,20 @@ const Pokedex: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { menuOption, screen, setMenuOption, setScreen } = useContext(MenuPokedexContext);
   const router = useIonRouter();
   
-const onBigBlueButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
-  e.preventDefault();
-
-  if (screen === EPokedexScreen.MENU) {
-    const path = EPokedexMenuOption[menuOption].toLowerCase();
-    setScreen(menuOption as unknown as EPokedexScreen);
-    router.push(`/${path}`);
-  } else if (screen === EPokedexScreen.POKEDEX) {
-    (window as any).pokedexGridNavigation?.handleSelect();
-  }
-};
+  const onBigBlueButtonClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  
+    if (screen === EPokedexScreen.MENU) {
+      const path = EPokedexMenuOption[menuOption].toLowerCase();
+      setScreen(menuOption as unknown as EPokedexScreen);
+      router.push(`/${path}`);
+    } else if (screen === EPokedexScreen.POKEDEX) {
+      (window as any).pokedexGridNavigation?.handleSelect();
+    } else if (screen === EPokedexScreen.PACK) {
+      (window as any).packGridNavigation?.handleSelect();
+    }
+  };
+  
   const toggleScreen = () => {
     if (screen === EPokedexScreen.EXIT) {
       setScreen(EPokedexScreen.MENU);
